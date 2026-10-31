@@ -2,16 +2,22 @@
 {
   "name": "Sistem Rekod Disiplin SKAM",
   "short_name": "Disiplin SKAM",
-  "description": "Sistem Rekod Disiplin Murid SK Ayer Molek",
-  "start_url": "./",
+  "description": "Sistem Rekod Disiplin Murid SK Ayer Molek, Melaka",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1e3a5f",
   "icons": [
     {
-      "src": "https://lh3.googleusercontent.com/d/1dHU9RCiAsDb3TMcLceRap6ZB5CjLH3Ky",
-      "sizes": "any",
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     }
