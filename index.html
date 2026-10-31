@@ -27,15 +27,43 @@
   <meta name="apple-mobile-web-app-title" content="Disiplin SKAM">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-  <script>
-    window.addEventListener("load", function () {
-      setTimeout(function () {
-        window.location.replace(
-          "https://script.google.com/macros/s/AKfycbyZl8A7MpFa7SdLnZjTQnW_bfOxDZvWxBSFvWdhd4EBcmcS0ztHSVwXKHsPqNni4yneTw/exec"
-        );
-      }, 1500);
-    });
-  </script>
+  
+<script>
+  let deferredPrompt = null;
+
+  window.addEventListener("beforeinstallprompt", function (event) {
+    event.preventDefault();
+    deferredPrompt = event;
+
+    const btn = document.getElementById("installBtn");
+    if (btn) {
+      btn.style.display = "block";
+    }
+  });
+
+  async function installAplikasi() {
+    if (!deferredPrompt) {
+      alert(
+        "Pemasangan terus tidak tersedia pada pelayar ini. " +
+        "Gunakan menu pelayar untuk memasang aplikasi."
+      );
+      return;
+    }
+
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+
+    document.getElementById("installBtn").style.display = "none";
+  }
+
+  window.addEventListener("appinstalled", function () {
+    deferredPrompt = null;
+    const btn = document.getElementById("installBtn");
+    if (btn) btn.style.display = "none";
+  });
+</script>
+
 
 
   <style>
@@ -91,6 +119,26 @@
   alt="Logo SK Ayer Molek"
   width="110"
   height="110">
+
+    
+<button
+  id="installBtn"
+  type="button"
+  onclick="installAplikasi()"
+  style="
+    display:none;
+    background:#008b57;
+    color:white;
+    border:0;
+    padding:15px 25px;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    width:100%;
+    margin:15px 0;">
+  ⬇ Install Aplikasi
+</button>
 
 
     <h2>Sistem Rekod Disiplin SKAM</h2>
