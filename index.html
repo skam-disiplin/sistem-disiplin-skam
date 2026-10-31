@@ -28,38 +28,56 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
   
+
 <script>
   let deferredPrompt = null;
 
   window.addEventListener("beforeinstallprompt", function (event) {
     event.preventDefault();
     deferredPrompt = event;
-
-    const btn = document.getElementById("installBtn");
-    if (btn) {
-      btn.style.display = "block";
-    }
   });
 
   async function installAplikasi() {
-    if (!deferredPrompt) {
+    // iPhone atau iPad
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    if (isIOS) {
       alert(
-        "Pemasangan terus tidak tersedia pada pelayar ini. " +
-        "Gunakan menu pelayar untuk memasang aplikasi."
+        "CARA INSTALL APLIKASI DI iPHONE\n\n" +
+        "1. Buka pautan ini menggunakan Safari.\n" +
+        "2. Tekan butang Kongsi (Share).\n" +
+        "3. Pilih Add to Home Screen / Tambah ke Skrin Utama.\n" +
+        "4. Tekan Add / Tambah.\n\n" +
+        "Ikon Disiplin SKAM akan muncul pada skrin utama."
       );
       return;
     }
 
-    deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
-    deferredPrompt = null;
+    // Chrome atau pelayar yang menawarkan pemasangan terus
+    if (deferredPrompt) {
+      const promptEvent = deferredPrompt;
+      deferredPrompt = null;
 
-    document.getElementById("installBtn").style.display = "none";
+      await promptEvent.prompt();
+      await promptEvent.userChoice;
+      return;
+    }
+
+    // Pelayar lain atau aplikasi sudah dipasang
+    alert(
+      "Pemasangan terus tidak tersedia buat masa ini.\n\n" +
+      "Jika menggunakan Chrome Android:\n" +
+      "1. Tekan menu tiga titik (⋮).\n" +
+      "2. Pilih Install app atau Add to Home screen.\n" +
+      "3. Ikut arahan pemasangan.\n\n" +
+      "Jika aplikasi sudah dipasang, tidak perlu memasangnya semula."
+    );
   }
 
-  wiwindow.addEventListener("appinstalled", function () {
-  deferredPrompt = null;
-});
+  window.addEventListener("appinstalled", function () {
+    deferredPrompt = null;
+  });
 </script>
 
 
