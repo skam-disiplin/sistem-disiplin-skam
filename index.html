@@ -9,42 +9,74 @@
   <title>Sistem Rekod Disiplin SKAM</title>
 
   <link rel="manifest" href="./manifest.webmanifest">
-
   <meta name="theme-color" content="#1e3a5f">
 
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: #f1f5f9;
-    }
-
-    header {
-      background: #1e3a5f;
-      color: white;
-      padding: 15px;
+      font-family: Arial, sans-serif;
       text-align: center;
     }
 
-    iframe {
-      width: 100%;
-      height: calc(100dvh - 70px);
-      border: none;
+    .kotak {
+      background: white;
+      padding: 30px;
+      margin: 20px;
+      border-radius: 16px;
+      max-width: 420px;
+      box-shadow: 0 4px 15px #00000012;
+    }
+
+    img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+    }
+
+    h2 {
+      color: #1e3a5f;
+    }
+
+    a {
       display: block;
+      background: #1e3a5f;
+      color: white;
+      padding: 15px;
+      margin-top: 25px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
 
 <body>
+  <div class="kotak">
 
-  <header>
-    Sistem Rekod Disiplin SKAM
-  </header>
+    <img
+      src="https://lh3.googleusercontent.com/d/1dHU9RCiAsDb3TMcLceRap6ZB5CjLH3Ky"
+      alt="Logo SKAM">
 
-  <iframe
-    title="Sistem Rekod Disiplin SKAM"
-    src="https://script.google.com/macros/s/AKfycbyZl8A7MpFa7SdLnZjTQnW_bfOxDZvWxBSFvWdhd4EBcmcS0ztHSVwXKHsPqNni4yneTw/exec">
-  </iframe>
+    <h2>Sistem Rekod Disiplin SKAM</h2>
 
+    <p>
+      Sekolah Kebangsaan Ayer Molek, Melaka
+    </p>
+
+    <p>
+      Sila tekan butang di bawah untuk
+      mengakses sistem rekod disiplin.
+    </p>
+
+    <a href="https://script.google.com/macros/s/AKfycbyZl8A7MpFa7SdLnZjTQnW_bfOxDZvWxBSFvWdhd4EBcmcS0ztHSVwXKHsPqNni4yneTw/exec">
+      BUKA SISTEM DISIPLIN
+    </a>
+
+  </div>
 </body>
 </html>
